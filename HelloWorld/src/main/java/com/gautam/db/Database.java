@@ -9,7 +9,13 @@ import org.h2.tools.Server;
 
 /**
  * @author Gautam Pal
- *
+ * 
+ * DROP TABLE IF EXISTS DBUSER;
+ * CREATE TABLE DBUSER(USER_ID INT PRIMARY KEY, USERNAME VARCHAR(20) NOT NULL, CREATED_BY VARCHAR(20) NOT NULL, CREATED_DATE DATE NOT NULL);
+ * http://localhost:9082/
+ * jdbc:h2:tcp://localhost:9043/mem:dataSource
+ * sa
+ * pass <blank>
  */
 public class Database {
 	

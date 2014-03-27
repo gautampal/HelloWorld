@@ -3,8 +3,6 @@
  */
 package com.gautam.threads;
 
-import java.util.Arrays;
-
 
 /**
  * @author Gautam Pal
