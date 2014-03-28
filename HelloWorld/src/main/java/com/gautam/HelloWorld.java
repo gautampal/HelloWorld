@@ -4,6 +4,7 @@
 package com.gautam;
 
 import java.util.Date;
+import java.util.List;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
@@ -45,7 +46,11 @@ public class HelloWorld {
 		session.save(user);
 		session.getTransaction().commit();
 		
-	    return "<html><head><title>Success</title></head><body><H1>Success</H1></body></html>";
+		session.beginTransaction();
+		List list = session.createCriteria(DBUser.class).list();
+		session.getTransaction().commit();
+		
+	    return "<html><head><title>Success</title></head><body><H1>Rows added- " + list.size() + "</H1><br>" + list.toArray() + "</body></html>";
 	}
 	
 }
