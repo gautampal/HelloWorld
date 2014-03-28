@@ -81,4 +81,9 @@ public class DBUser implements Serializable {
 		this.createdDate = createdDate;
 	}
 	
+	@Override
+	public String toString()
+	{
+		return "USER_ID:" + userId + " Username:" + username + '\n';
+	}
 }

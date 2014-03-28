@@ -3,6 +3,7 @@
  */
 package com.gautam;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class HelloWorld {
 		List list = session.createCriteria(DBUser.class).list();
 		session.getTransaction().commit();
 		
-	    return "<html><head><title>Success</title></head><body><H1>Rows added- " + list.size() + "</H1><br>" + list.toArray() + "</body></html>";
+	    return "<html><head><title>Success</title></head><body><H1>Rows added- " + list.size() + "</H1><br>" + Arrays.toString(list.toArray()) + "</body></html>";
 	}
 	
 }
