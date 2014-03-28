@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.gautam.helpers.Superhero;
 import com.gautam.hibernate.DBUser;
 import com.gautam.hibernate.HibernateUtil;
 
@@ -38,7 +39,7 @@ public class HelloWorld {
 		DBUser user = new DBUser();
  
 		user.setUsername(Superhero.get());
-		user.setCreatedBy("system");
+		user.setCreatedBy("StanLee");
 		user.setCreatedDate(new Date());
  
 		session.save(user);

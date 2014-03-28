@@ -19,21 +19,20 @@
 	</bean>
 	
 	
+<!--Removed to add a custom H2 DB state handler with a blocking stop 	
 	<bean id="org.h2.tools.Server" class="org.h2.tools.Server"
     	factory-method="createTcpServer" init-method="start" destroy-method="stop">
     	<constructor-arg value="-tcp,-tcpAllowOthers,-tcpPort,9043" />
     </bean>
 
-	<!-- provides a H2 console to look into the db if necessary -->
     <bean id="org.h2.tools.Server-WebServer" class="org.h2.tools.Server"
     	factory-method="createWebServer" init-method="start">
     	<constructor-arg value="-web,-webAllowOthers,-webPort,9082" />
+    </bean> -->
+    
+    <bean id="org.h2.tools.Server" class="com.gautam.db.Database"
+    	init-method="start" destroy-method="stop">
     </bean>
-
-<!-- 	<jdbc:embedded-database id="dataSource" type="H2">
-		<jdbc:script location="classpath:db-schema.sql" />
-		<jdbc:script location="classpath:db-test-data.sql" />
-	</jdbc:embedded-database> -->
 	
 	<mvc:resources mapping="/favicon.ico" location="/favicon.ico" />
 
