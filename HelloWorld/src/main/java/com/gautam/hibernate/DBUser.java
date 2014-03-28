@@ -5,9 +5,13 @@ package com.gautam.hibernate;
 
 import java.io.Serializable;
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,7 +42,9 @@ public class DBUser implements Serializable {
 	}
  
 	@Id
-	@Column(name = "USER_ID", unique = true, nullable = false, precision = 5, scale = 0)
+	@Column(name = "USER_ID", unique = true, nullable = false)
+	@SequenceGenerator(name="my_seq", sequenceName="user_id_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="my_seq")
 	public int getUserId() {
 		return this.userId;
 	}

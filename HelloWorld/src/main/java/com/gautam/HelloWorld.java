@@ -25,27 +25,26 @@ public class HelloWorld {
 	@ResponseBody
 	public String printHello() {
 
-	    return "<html><body><H1>Hello World</H1></body></html>";
+	    return "<html><head><title>Gautam test</title></head><body><H1>Hello World</H1></body></html>";
 	}
 	
 	@RequestMapping("pushdata")
 	@ResponseBody
 	public String testHibernate() {
 
-		Session session = HibernateUtil.getSessionFactory().openSession();
+		Session session = HibernateUtil.getSession();
 		 
 		session.beginTransaction();
 		DBUser user = new DBUser();
  
-		user.setUserId(100);
-		user.setUsername("superman");
+		user.setUsername(Superhero.get());
 		user.setCreatedBy("system");
 		user.setCreatedDate(new Date());
  
 		session.save(user);
 		session.getTransaction().commit();
 		
-	    return "Success";
+	    return "<html><head><title>Success</title></head><body><H1>Success</H1></body></html>";
 	}
 	
 }
