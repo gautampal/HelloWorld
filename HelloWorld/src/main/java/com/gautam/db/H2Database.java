@@ -20,7 +20,7 @@ import com.gautam.helpers.Util;
  * User - sa
  * Pass <blank>
  */
-public class Database {
+public class H2Database {
 	
     private static final Integer TCPPORT = 9043;
 	private static final Integer WEBPORT = 9082;
@@ -31,7 +31,7 @@ public class Database {
 	private Server webServer = null;
     private Server tcpServer = null;
     
-    public Database() throws SQLException
+    public H2Database() throws SQLException
     {
 			webServer = Server.createWebServer(
 					new String[] { "-web", "-webAllowOthers", "-webPort", WEBPORT.toString() });

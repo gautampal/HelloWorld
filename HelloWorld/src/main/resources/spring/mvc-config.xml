@@ -30,7 +30,7 @@
     	<constructor-arg value="-web,-webAllowOthers,-webPort,9082" />
     </bean> -->
     
-    <bean id="org.h2.tools.Server" class="com.gautam.db.Database"
+    <bean id="org.h2.tools.Server" class="com.gautam.db.H2Database"
     	init-method="start" destroy-method="stop">
     </bean>
 	

@@ -17,11 +17,11 @@ public class TestDB {
 	 */
 	public static void main(String[] args) throws IOException {
 		
-		Database database = null;
+		H2Database database = null;
 		
 		try {
 			try {
-				database = new Database();
+				database = new H2Database();
 				database.start();
 			} catch (SQLException e1) {
 				print("Unable to start DB");
@@ -50,7 +50,7 @@ public class TestDB {
 	    return reader.readLine();
 	}
 
-	private static void dbStop(Database database) {
+	private static void dbStop(H2Database database) {
 		print("Shutting down DB");
 		if (database != null)
 		{
@@ -59,7 +59,7 @@ public class TestDB {
 	}
 	
 	//Eclipse stop sends a Hangup which is not handled on Windows
-	private static void handleSignals(final Database database) {
+	private static void handleSignals(final H2Database database) {
 		try {
 
 			Signal.handle(new Signal("TERM"), new SignalHandler() {

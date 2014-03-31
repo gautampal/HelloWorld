@@ -7,11 +7,13 @@ import java.util.Date;
 
 import org.hibernate.Session;
 
+import com.gautam.dbentities.DBUser;
+
 /**
  * @author Gautam Pal
  *
  */
-public class TestHibernamte {
+public class TestHibernate {
 
 	/**
 	 * @param args

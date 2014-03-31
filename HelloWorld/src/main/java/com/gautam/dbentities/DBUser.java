@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.gautam.hibernate;
+package com.gautam.dbentities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -25,7 +25,7 @@ public class DBUser implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 224819984138049L;
-	private int userId;
+	private long userId;
 	private String username;
 	private String createdBy;
 	private Date createdDate;
@@ -33,7 +33,7 @@ public class DBUser implements Serializable {
 	public DBUser() {
 	}
  
-	public DBUser(int userId, String username, String createdBy,
+	public DBUser(long userId, String username, String createdBy,
 			Date createdDate) {
 		this.userId = userId;
 		this.username = username;
@@ -43,13 +43,12 @@ public class DBUser implements Serializable {
  
 	@Id
 	@Column(name = "USER_ID", unique = true, nullable = false)
-	@SequenceGenerator(name="my_seq", sequenceName="user_id_seq")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE ,generator="my_seq")
-	public int getUserId() {
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	public long getUserId() {
 		return this.userId;
 	}
  
-	public void setUserId(int userId) {
+	public void setUserId(long userId) {
 		this.userId = userId;
 	}
  
