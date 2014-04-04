@@ -20,17 +20,18 @@ public class HibernateUtil {
 
     private static final Logger log = Logger.getLogger(HibernateUtil.class.getName());
 
-    static {
+/*    static {
         try {
-            configuration.configure();
+            configuration.configure("hibernate/hibernate.cfg.xml");
             serviceRegistry = new ServiceRegistryBuilder().applySettings(configuration.getProperties())
             . buildServiceRegistry();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Exception e) {
-            log.severe("Error Creating SessionFactory" + e);
+            log.severe("Error Creating SessionFactory: " + e);
+            e.printStackTrace();
 
         }
-    }
+    }*/
 
     private HibernateUtil() {
     }
@@ -57,7 +58,8 @@ public class HibernateUtil {
             .buildServiceRegistry();
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         } catch (Exception e) {
-            log.severe("Error Creating SessionFactory" + e);
+            log.severe("Error Creating SessionFactory:" + e);
+            e.printStackTrace();
         }
     }
 

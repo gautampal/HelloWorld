@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gautam.dbentities.DBUser;
+import com.gautam.dbentities.Vehicle;
+import com.gautam.dbentities.VehicleDetails;
 import com.gautam.helpers.Superhero;
+import com.gautam.helpers.VehicleType;
 
 /**
  * @author Gautam Pal
@@ -43,6 +46,30 @@ public class HibernateController {
 		session.getTransaction().commit();
 		
 	    return "<html><head><title>Success</title></head><body><H1>Rows added- " + list.size() + "</H1><br>" + Arrays.toString(list.toArray()) + "</body></html>";
+	}
+	
+	@RequestMapping("onetoone")
+	@ResponseBody
+	public String testOneToOne() {
+		System.out.println("Hibernate one to one (Annotation)");
+		Session session = HibernateUtil.getSession();
+ 
+		session.beginTransaction();
+ 
+		Vehicle vehicle = new Vehicle();
+ 
+		vehicle.name = "Jaguar";
+ 
+		VehicleDetails vehicleDetail = new VehicleDetails();
+		vehicleDetail.type = VehicleType.CAR;
+		vehicleDetail.numberOfTyres = 4;
+ 
+		vehicle.details = vehicleDetail;
+ 
+		session.save(vehicle);
+		session.getTransaction().commit();
+ 
+		return "<html><head><title>Success</title></head><body><H1>Done</H1></body></html>";
 	}
 	
 }

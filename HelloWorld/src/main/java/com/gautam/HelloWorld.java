@@ -28,7 +28,7 @@ public class HelloWorld {
 	@ResponseBody
 	public String printHello() {
 
-	    return "<html><head><title>Gautam test</title></head><body><H1>Hello World</H1></body></html>";
+	    return "<html><head><title>Gautam test</title></head><body><H1>Spring Controller is up!</H1></body></html>";
 	}
 	
 }
