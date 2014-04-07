@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -34,7 +36,11 @@ public class VehicleDetails implements Serializable{
 	@GeneratedValue(generator = "VehicleDetails")
 	private Integer id;
 	
+	@Column(unique = true, nullable = false)
+	private String name;
+	
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private VehicleType type;
 	
 	@Column
@@ -74,6 +80,7 @@ public class VehicleDetails implements Serializable{
 
 	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
+		this.name = vehicle.getName();
 	}
 	
 }

@@ -69,7 +69,24 @@ public class HibernateController {
 		
 		session.save(vehicle);
 		session.getTransaction().commit();
+
+		session.beginTransaction();
+		 
+		vehicle = new Vehicle();
  
+		vehicle.setName("F22");
+ 
+		vehicleDetail = new VehicleDetails();
+		vehicleDetail.setType(VehicleType.AIRCRAFT);
+		vehicleDetail.setNumberOfTyres(3);
+		
+		vehicle.setDetails(vehicleDetail);
+		vehicleDetail.setVehicle(vehicle);
+		
+		session.save(vehicle);
+		session.getTransaction().commit();
+
+		
 		return "<html><head><title>Success</title></head><body><H1>Done</H1></body></html>";
 	}
 	
