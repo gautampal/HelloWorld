@@ -36,7 +36,7 @@ public class VehicleDetails implements Serializable{
 	@GeneratedValue(generator = "VehicleDetails")
 	private Integer id;
 	
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private String name;
 	
 	@Column(nullable = false)

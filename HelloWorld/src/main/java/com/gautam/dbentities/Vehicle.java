@@ -38,8 +38,11 @@ public class Vehicle implements Serializable{
 	@NotNull
 	private VehicleDetails details;
 	
-	@Column(unique = true, nullable = false)
+	@Column(nullable = false)
 	private String name;
+	
+	@Column
+	private String model;
 	
 	public Integer getId() {
 		return id;
@@ -61,5 +64,11 @@ public class Vehicle implements Serializable{
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public String getModel() {
+		return model;
+	}
+	public void setModel(String model) {
+		this.model = model;
 	}
 }

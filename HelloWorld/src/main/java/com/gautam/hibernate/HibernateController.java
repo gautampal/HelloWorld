@@ -5,8 +5,10 @@ package com.gautam.hibernate;
 
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,6 +61,7 @@ public class HibernateController {
 		Vehicle vehicle = new Vehicle();
  
 		vehicle.setName("Jaguar");
+		vehicle.setModel("XF");
  
 		VehicleDetails vehicleDetail = new VehicleDetails();
 		vehicleDetail.setType(VehicleType.CAR);
@@ -75,6 +78,7 @@ public class HibernateController {
 		vehicle = new Vehicle();
  
 		vehicle.setName("F22");
+		vehicle.setModel("Raptor");
  
 		vehicleDetail = new VehicleDetails();
 		vehicleDetail.setType(VehicleType.AIRCRAFT);
@@ -86,8 +90,56 @@ public class HibernateController {
 		session.save(vehicle);
 		session.getTransaction().commit();
 
+		Criteria criteria = session.createCriteria(Vehicle.class);
+		List<Vehicle> vehicles = criteria.list();
+		Iterator<Vehicle> iterator = vehicles.iterator();
 		
-		return "<html><head><title>Success</title></head><body><H1>Done</H1></body></html>";
+		StringBuilder return_ = new StringBuilder();
+		
+		return_.append("<html><head><title>Success</title></head><body><table border=\"1\" style=\"width:300px\">");
+		
+		return_.append("<h1><tr>");
+		return_.append("<th>");
+		return_.append("ID");
+		return_.append("</th>");
+		return_.append("<th>");
+		return_.append("Name");
+		return_.append("</th>");
+		return_.append("<th>");
+		return_.append("Model");
+		return_.append("</th>");
+		return_.append("<th>");
+		return_.append("Number of tyres");
+		return_.append("</th>");
+		return_.append("<th>");
+		return_.append("Type");
+		return_.append("</th>");
+		return_.append("</tr></h1>");
+		
+		while (iterator.hasNext()) { 
+			return_.append("<tr>");
+			Vehicle next = iterator.next();
+			return_.append("<td>");
+			return_.append(next.getId());
+			return_.append("</td>");
+			return_.append("<td>");
+			return_.append(next.getName());
+			return_.append("</td>");
+			return_.append("<td>");
+			return_.append(next.getModel());
+			return_.append("</td>");
+			return_.append("<td>");
+			return_.append(next.getDetails().getNumberOfTyres());
+			return_.append("</td>");
+			return_.append("<td>");
+			return_.append(next.getDetails().getType());
+			return_.append("</td>");
+			return_.append("</tr>");
+        } 
+		
+		return_.append("</body></html>");
+		
+		return return_.toString();
 	}
 	
 }
