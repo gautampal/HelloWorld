@@ -58,14 +58,15 @@ public class HibernateController {
  
 		Vehicle vehicle = new Vehicle();
  
-		vehicle.name = "Jaguar";
+		vehicle.setName("Jaguar");
  
 		VehicleDetails vehicleDetail = new VehicleDetails();
-		vehicleDetail.type = VehicleType.CAR;
-		vehicleDetail.numberOfTyres = 4;
- 
-		vehicle.details = vehicleDetail;
- 
+		vehicleDetail.setType(VehicleType.CAR);
+		vehicleDetail.setNumberOfTyres(4);
+		
+		vehicle.setDetails(vehicleDetail);
+		vehicleDetail.setVehicle(vehicle);
+		
 		session.save(vehicle);
 		session.getTransaction().commit();
  
